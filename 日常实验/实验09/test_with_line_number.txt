@@ -1,0 +1,11 @@
+file_path = './test.py'                                       #1
+                                                              #2
+with open(file_path, 'r') as fp:                              #3
+    lines = fp.readlines()                                    #4
+max_length = len(max(lines, key=len))                         #5
+                                                              #6
+lines = [line.rstrip().ljust(max_length) + '#' + str(index) + #7
+         '\n' for index, line in enumerate(lines)]            #8
+                                                              #9
+with open(file_path[:-3]+'_with_line_number.py', 'w') as fp:  #10
+    fp.writelines(lines)                                      #11
